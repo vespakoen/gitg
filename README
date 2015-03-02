@@ -11,6 +11,26 @@ Bugs:         https://bugzilla.gnome.org/browse.cgi?product=gitg
 Download:     http://download.gnome.org/sources/gitg/
 Mailing list: http://mail.gnome.org/mailman/listinfo/gitg-list
 
+= Installing requirements for Ubuntu 14.10 =
+
+	$ cd /tmp
+        $ git clone https://github.com/jessevdk/gitg.git
+        $ cd gitg
+	$ git checkout tags/v3.15.1
+	$ sed -i 's/3.12.0/3.10.8/g' configure.ac
+	$ sed -i 's|../libgd|git://git.gnome.org/libgd|g' .gitmodules
+	$ git submodule sync
+	$ sudo apt-get build-dep gitg
+	$ sudo apt-get -y install libgirepository1.0-dev \
+	    libwebkit2gtk-3.0-dev \
+	    libsecret-1-dev \
+	    libjson-glib-dev \
+	    libgee-0.8-dev \
+	    gtk+3.0 \
+	    libgit2-dev
+	$ ./autogen.sh
+	$ ./configure
+
 = Installing gitg =
 To install the latest version of gitg, make sure to download gitg-3.14.0.tar.xz
 from the download site. After downloading the following procedure installs
